@@ -1,0 +1,11 @@
+.box_container{
+    margin-left: 8rem;
+    margin-right: 8rem;
+}
+.card{
+    margin-bottom: 1rem;
+    border: 2px solid rgb(107, 107, 107);
+}
+.display-3{
+    background-color: rgb(235, 235, 235);
+}

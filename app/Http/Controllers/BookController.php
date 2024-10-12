@@ -6,8 +6,8 @@ use App\Enums\GenreBook;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
-class BookController extends Controller
-{
+class BookController extends Controller{
+
     public function index(Request $request){
         $filter = $request->query('filter');
         if (!empty($filter)) {
