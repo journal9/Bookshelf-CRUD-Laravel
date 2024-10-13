@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\BookController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/books',[BookController::class,'index'])->name('books-index');
@@ -30,3 +31,15 @@ Route::get('/books/{book}/edit',[BookController::class,'editbook'])->name('books
 Route::put('/books/{book}/update',[BookController::class,'updatebook'])->name('books-update');
 
 Route::delete('/books/{book}/delete',[BookController::class,'deletebook'])->name('books-del');
+
+Route::get('/users',[UserController::class,'index'])->name('users-index');
+
+Route::get('/user/{user}/edit',[UserController::class,'edituser'])->name('users-edit');
+
+Route::delete('/user/{user}/delete',[UserController::class,'deleteuser'])->name('users-del');
+
+Route::put('/users/{user}/update',[UserController::class,'updateuser'])->name('users-update');
+
+Route::get('/users/create',[UserController::class,'create'])->name('users-create');
+
+Route::post('/users/add',[UserController::class,'adduser'])->name('users-add');

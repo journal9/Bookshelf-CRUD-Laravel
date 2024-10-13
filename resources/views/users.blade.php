@@ -16,13 +16,13 @@
         <a href="{{Route('books-index')}}">Books</a>
         <a href="{{Route('users-index')}}">Users</a>
     </div>
-    <a type="submit" class="btn btn-success mb-2" href="{{route('books-create')}}">Add Book</a>
+    <a type="submit" class="btn btn-success mb-2" href="{{route('users-create')}}">Add User</a>
     <form class="form-inline" method="GET">
         <div class="form-group mb-2">
-            <label for="filter" class="col-sm-2 col-form-label">Filter</label>
-            <input type="text" class="form-control" id="filter" name="filter" placeholder="Book genre">
+            <label for="filter" class="col-sm-2 col-form-label">Email</label>
+            <input type="text" class="form-control" id="filter" name="filter" placeholder="user email">
         </div>
-        <button type="submit" class="btn btn-dark mb-2">Filter</button>
+        <button type="submit" class="btn btn-dark mb-2">Search</button>
     </form>
     <div>
         @if(session()->has('success'))
@@ -32,18 +32,18 @@
         @endif
     </div>
     <div class="card_container">
-    @if($books)
-        @foreach($books as $book)
+    @if($users)
+        @foreach($users as $user)
             <div class="card">
                 <div class="card-header">
-                    {{$book->title}}
+                    {{$user->name}}
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                    <p>{{$book->author_name}}</p>
-                    <footer class="blockquote-footer">{{$book->genre}}<cite title="Source Title">{{$book->published_year}}</cite>
-                    <a class="btn btn-warning" href="{{route('books-edit',['book'=>$book])}}">Edit</a>
-                    <form method="post", action="{{route('books-del',['book'=>$book])}}">
+                    <p>{{$user->email}}</p>
+                    <footer class="blockquote-footer">{{$user->age}}<cite title="Source Title">{{$user->subscription_over}}</cite>
+                    <a class="btn btn-warning" href="{{route('users-edit',['user'=>$user])}}">Edit</a>
+                    <form method="post", action="{{route('users-del',['user'=>$user])}}">
                         @csrf
                         @method('delete')
                         <input class="btn btn-danger" type="submit" value="Remove"/>
@@ -57,8 +57,8 @@
     </div>
     {{-- Pagination --}}
     <div class="d-flex justify-content-center">
-        <!-- {!! $books->links() !!} -->
-        {{ $books->links() }}
+        <!-- {!! $users->links() !!} -->
+        {{ $users->links() }}
     </div>
     </div>
 </body>

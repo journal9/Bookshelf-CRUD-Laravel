@@ -1,8 +1,12 @@
 -- create book crud                          ----done
 -- add css for book crud                     ----done
--- add admin user/users                      --
--- add students
--- create user groups
+-- add admin user/users                      ----done
+-- add students(create,update,delete)        ----done
+-- create user groups                        ----done
 -- add authenticatio and middleware
+-- add admin page                            ----done
 -- add users page
 -- add emailing system
+
+-- adding email verification for users
+-- admin panel report
