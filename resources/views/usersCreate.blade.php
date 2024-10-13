@@ -44,6 +44,10 @@
                     <input type="text" class="form-control" id="validationDefault03" name="role" placeholder="role" required>
                 </div>
                 <div class="col-md-2 mb-3">
+                    <label>Password</label>
+                    <input type="text" class="form-control" id="validationDefault03" name="password" placeholder="password" required>
+                </div>
+                <div class="col-md-2 mb-3">
                     <label>Phone Number</label>
                     <input type="text" class="form-control" id="validationDefault04" name="phone_number" placeholder="number" required>
                 </div>

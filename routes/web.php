@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\RouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/books',[BookController::class,'index'])->name('books-index');
+
+Route::post('/route',[RouteController::class,'route'])->name('login-route');
 
 Route::get('/books/create',[BookController::class,'create'])->name('books-create');
 
@@ -43,3 +47,5 @@ Route::put('/users/{user}/update',[UserController::class,'updateuser'])->name('u
 Route::get('/users/create',[UserController::class,'create'])->name('users-create');
 
 Route::post('/users/add',[UserController::class,'adduser'])->name('users-add');
+
+Route::get('/member',[MemberController::class,'index'])->name('member-page');

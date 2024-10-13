@@ -47,6 +47,7 @@ class UserController extends Controller
             'email'=>$request->input('email'),
             'age'=>$request->input('age'),
             'role'=>$request->input('role'),
+            'password'=>$request->input('password'),
             'phone_number'=>$request->input('phone_number'),
             'subscription_over'=>date('Y-m-d', strtotime('+1 years')),
         ]);

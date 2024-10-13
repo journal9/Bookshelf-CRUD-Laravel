@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
-{
-    public function addUser(){
-        
+    {
+        public function index(){
+            dd('Hello');
+        }
     }
     
-}
+
