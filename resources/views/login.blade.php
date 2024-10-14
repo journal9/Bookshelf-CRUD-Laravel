@@ -23,11 +23,6 @@
                 </div>
 
                 <div class="mb-3">
-                @if(session()->has('success'))
-                    <span>
-                        {{session('success')}}
-                    </span>
-                @endif
                 <input type="text" class="form-control" name="email" aria-describedby="emailHelp"
                     placeholder="User Email">
                 </div>

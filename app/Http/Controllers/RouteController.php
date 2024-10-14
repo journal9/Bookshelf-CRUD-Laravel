@@ -20,7 +20,7 @@ class RouteController extends Controller
                 return redirect(route('books-index'));
             }
             else{
-                return redirect(route('member-page'));
+                return redirect(route('member-page',['user'=>$user]));
             }
         }
         else{

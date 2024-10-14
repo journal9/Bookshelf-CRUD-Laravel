@@ -14,4 +14,9 @@ class Book extends Model
         'published_year',
         'genre'
     ];
+
+    public function users(){
+        return $this->belongsToMany(Member::class);
+    }
+
 }
