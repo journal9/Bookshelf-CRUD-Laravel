@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <div class="box_container">
+    <div class="box_container" style="margin-bottom:2rem;">
         <div class="display-3">
-            {{$user->name}}
+            {{$user->name}}'s Bookshelf
         </div>
         <div class="row">
             <div class="col-8">

@@ -3,10 +3,10 @@
 -- add admin user/users                      ----done
 -- add students(create,update,delete)        ----done
 -- create user groups                        ----done
--- add authenticatio and middleware
+-- add authentication and middleware
 -- add admin page                            ----done
 -- user-book map(id,uer-id,book-id)          ----done
--- add users page
+-- add users page(add,remove)mb
 -- add emailing system
 
 -- adding email verification for users

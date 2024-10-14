@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
+use App\Models\Book;
 use Illuminate\Support\Facades\Hash;
 
 class RouteController extends Controller
@@ -20,7 +21,8 @@ class RouteController extends Controller
                 return redirect(route('books-index'));
             }
             else{
-                return redirect(route('member-page',['user'=>$user]));
+                $all_books = Book::paginate(10);
+                return view('members',['all_books'=>$all_books,'user'=>$user]);
             }
         }
         else{
