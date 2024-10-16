@@ -42,6 +42,7 @@ class UserController extends Controller
     }
 
     public function adduser(Request $request){
+        // auth()
         $newBook = Member::create([
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),

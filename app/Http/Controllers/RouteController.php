@@ -13,6 +13,7 @@ class RouteController extends Controller
         $email=$request->input('email');
         $password=$request->input('password');
         $user = Member::where('email',$email)->first();
+        
         if(!$user){
             return redirect(route('login-route'));
         }

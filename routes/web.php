@@ -22,25 +22,23 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/books',[BookController::class,'index'])->name('books-index');
+Route::controller(BookController::class)->prefix('books')->group(function(){
+
+    Route::get('/','index')->name('books-index');  
+    Route::get('/create','create')->name('books-create');
+    Route::post('/add','addbook')->name('books-add');
+    Route::get('/{book}/edit','editbook')->name('books-edit');
+    Route::put('/{book}/update','updatebook')->name('books-update');
+    Route::delete('/{book}/delete','deletebook')->name('books-del');
+});
 
 Route::post('/route',[RouteController::class,'route'])->name('login-route');
 
-Route::get('/books/create',[BookController::class,'create'])->name('books-create');
-
-Route::post('/books/add',[BookController::class,'addbook'])->name('books-add');
-
-Route::get('/books/{book}/edit',[BookController::class,'editbook'])->name('books-edit');
-
-Route::put('/books/{book}/update',[BookController::class,'updatebook'])->name('books-update');
-
-Route::delete('/books/{book}/delete',[BookController::class,'deletebook'])->name('books-del');
-
 Route::get('/users',[UserController::class,'index'])->name('users-index');
 
-Route::get('/user/{user}/edit',[UserController::class,'edituser'])->name('users-edit');
+Route::get('/users/{user}/edit',[UserController::class,'edituser'])->name('users-edit');
 
-Route::delete('/user/{user}/delete',[UserController::class,'deleteuser'])->name('users-del');
+Route::delete('/users/{user}/delete',[UserController::class,'deleteuser'])->name('users-del');
 
 Route::put('/users/{user}/update',[UserController::class,'updateuser'])->name('users-update');
 
