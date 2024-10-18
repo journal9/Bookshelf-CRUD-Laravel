@@ -41,7 +41,7 @@ class BookController extends Controller{
         //     'genre'=>$request->input('genre'),
         //     'published_year'=>$request->input('year'),
         // ]);
-        return redirect(route('books-index'));
+        return redirect(route('books-admin-index'));
     }
 
     public function editbook(Book $book){
@@ -56,12 +56,12 @@ class BookController extends Controller{
             'genre' => 'in:science,history,adventure,economy',
         ]);
         $book->update($data);
-        return redirect(route('books-index'))->with('success', 'updated successfully');
+        return redirect(route('books-admin-index'))->with('success', 'updated successfully');
     }
 
     public function deletebook(Book $book){
         $book->delete();
-        return redirect(route('books-index'))->with('success', 'deleted successfully');
+        return redirect(route('books-admin-index'))->with('success', 'deleted successfully');
     }
 
 }

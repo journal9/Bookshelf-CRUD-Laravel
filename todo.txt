@@ -6,8 +6,18 @@
 -- add authentication and middleware
 -- add admin page                            ----done
 -- user-book map(id,uer-id,book-id)          ----done
--- add users page(add,remove)mb
--- add emailing system
+-- add users page(add,remove) mb
+-- add emailing system  [job queue-async]
 
 -- adding email verification for users
 -- admin panel report
+
+-- change naming, user page
+-- session, auth
+
+--abstract class and interface
+--method overriding
+--queue
+--db relations
+--authentication and sessions
+--php.init  (testing)

@@ -13,7 +13,7 @@
         Admin Page
     </div>
     <div>
-        <a href="{{Route('books-index')}}">Books</a>
+        <a href="{{Route('books-admin-index')}}">Books</a>
         <a href="{{Route('users-index')}}">Users</a>
     </div>
     <a type="submit" class="btn btn-success mb-2" href="{{route('users-create')}}">Add User</a>

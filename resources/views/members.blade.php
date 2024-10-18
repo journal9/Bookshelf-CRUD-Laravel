@@ -12,7 +12,7 @@
 <body>
     <div class="box_container" style="margin-bottom:2rem;">
         <div class="display-3">
-            {{$user->name}}'s Bookshelf
+        {{$user->name}}'s Bookshelf
         </div>
         <div class="row">
             <div class="col-8">
@@ -27,7 +27,7 @@
                                 <blockquote class="blockquote mb-0">
                                 <p>{{$book->author_name}}</p>
                                 <footer class="blockquote-footer">{{$book->genre}}<cite title="Source Title">{{$book->published_year}}</cite>
-                                <a class="btn btn-primary">Add</a>
+                                <a  href="{{route('members-add',['book'=>$book,'user'=>$user])}}" class="btn btn-primary">Add</a>
                                 </footer>
                                 </blockquote>
                             </div>
@@ -48,6 +48,7 @@
                                     <blockquote class="blockquote mb-0">
                                     <p>{{$mbook->author_name}}</p>
                                     <footer class="blockquote-footer">{{$mbook->genre}}>
+                                    <a  href="{{route('members-del',['book'=>$book,'user'=>$user])}}" class="btn btn-danger">Remove</a>
                                     </footer>
                                     </blockquote>
                                 </div>
