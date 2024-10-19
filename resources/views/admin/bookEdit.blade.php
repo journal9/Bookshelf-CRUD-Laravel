@@ -37,7 +37,7 @@
             <div class="form-row">
                 <div class="col-md-2 mb-3">
                     <label>Book Genre</label>
-                    <input type="text" class="form-control" id="validationDefault03" name="genre" value="{{$book->genre??''}}" required>
+                    <input type="text" class="form-control" id="validationDefault03" name="genre_id" value="{{$book->genre_id??''}}" required>
                 </div>
                 <div class="col-md-2 mb-3">
                     <label>Published Year</label>

@@ -12,11 +12,11 @@ class Book extends Model
         'title',
         'author_name',
         'published_year',
-        'genre'
+        'genre_id'
     ];
 
     public function users(){
-        return $this->belongsToMany(Member::class);
+        return $this->belongsToMany(User::class);
     }
 
 }

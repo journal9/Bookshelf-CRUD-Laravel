@@ -15,9 +15,10 @@
 -- change naming, user page
 -- session, auth
 
---abstract class and interface
---method overriding
---queue
---db relations
---authentication and sessions
---php.init  (testing)
+---------------------------------------------------
+-- abstract class and interface
+-- method overriding
+-- queue
+-- db relations   ***
+-- authentication and sessions    ***
+-- php.init  (unit testing)

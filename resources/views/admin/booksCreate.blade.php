@@ -8,7 +8,7 @@
 </head>
     <body>
         <h1>
-            Add User
+            Create a book entry
         </h1>
         <div>
             @if($errors->any())
@@ -20,36 +20,28 @@
                     @endforeach
                 </ul>
             @endif
-        <form method="post" action="{{route('users-add')}}">
+        <form method="post" action="{{route('books-add')}}">
             @csrf
             @method('post')
             </div>
             <div class="form-row">
                 <div class="col-md-4 mb-3">
-                    <label>User Name</label>
-                    <input type="text" class="form-control" id="validationDefault01" name="name" placeholder="user name" required>
+                    <label>Book Title</label>
+                    <input type="text" class="form-control" id="validationDefault01" name="title" placeholder="book title" required>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label>User Email</label>
-                    <input type="text" class="form-control" id="validationDefault02" name="email" placeholder="email" required>
+                    <label>Author Name</label>
+                    <input type="text" class="form-control" id="validationDefault02" name="author_name" placeholder="author" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-md-2 mb-3">
-                    <label>User Age</label>
-                    <input type="text" class="form-control" id="validationDefault03" name="age" placeholder="age" required>
+                    <label>Book Genre</label>
+                    <input type="text" class="form-control" id="validationDefault03" name="genre_id" placeholder="genre" required>
                 </div>
                 <div class="col-md-2 mb-3">
-                    <label>Role</label>
-                    <input type="text" class="form-control" id="validationDefault03" name="role" placeholder="role" required>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <label>Password</label>
-                    <input type="text" class="form-control" id="validationDefault03" name="password" placeholder="password" required>
-                </div>
-                <div class="col-md-2 mb-3">
-                    <label>Phone Number</label>
-                    <input type="text" class="form-control" id="validationDefault04" name="phone_number" placeholder="number" required>
+                    <label>Published Year</label>
+                    <input type="text" class="form-control" id="validationDefault04" name="published_year" placeholder="published year" required>
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>

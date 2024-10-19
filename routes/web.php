@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::get('/', function () {
 
 Route::post('/route',[AdminController::class,'routeByRole'])->name('login-route');
 Route::get('/member',[MemberController::class,'index'])->name('member-page');
+
 
 Route::controller(BookController::class)->prefix('books')->group(function(){
 
@@ -51,3 +53,4 @@ Route::controller(MemberController::class)->prefix('member')->group( function(){
     Route::delete('/{book}/{user}/delete','removeBookFromUser')->name('members-del');
     // Route::put('/{book}/update','updateuser')->name('member');
 });
+

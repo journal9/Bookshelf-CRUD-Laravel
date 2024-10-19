@@ -37,7 +37,7 @@
             <div class="form-row">
                 <div class="col-md-2 mb-3">
                     <label>Age</label>
-                    <input type="text" class="form-control" id="validationDefault03" name="age" value="{{$user->age??''}}" required>
+                    <input type="text" class="form-control" id="validationDefault03" name="age" value="{{$user->Age??''}}" required>
                 </div>
                 <div class="col-md-2 mb-3">
                     <label>Email</label>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'phone_number',
+        'age',
+        'role_id',
+        'subscription_over',
+        'password'
     ];
 
     /**
@@ -42,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = Hash::make($password);
+    }
+    
+    public function books(){
+        return $this->belongsToMany(Book::class)->withTimestamps();
+    }
 }

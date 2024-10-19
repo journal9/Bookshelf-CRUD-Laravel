@@ -3,55 +3,57 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Member;
+use App\Models\User;
+use GuzzleHttp\Psr7\Response;
 
 class UserController extends Controller
 {
-    public function index(Request $request){
-        $email = $request->query('filter');
-        if (!empty($email)) {
-            $users = Member::where('email', 'like', '%'.$email.'%')->where('role', '=', 2 )->paginate(5);
-        } else {
-            $users = Member::where('role', '=', 2 )->paginate(5);
-        }
-        return view('users',['users'=>$users])->with('filter', $email);
-    }
-
-    public function edituser(Member $user){
-        return view('userEdit',['user' => $user]);
-    }
-
-    public function updateuser(member $user, Request $request){
-        $data = $request->validate([
-            'name' => 'required|max:50',
-            'email' => 'required|email:rfc,dns',
-            'age' => 'required|integer',
-            'phone_number' => 'required|string',
+    public function list_users(){
+        // $email = $request->query('filter');
+        // if (!empty($email)) {
+        //     $users = User::where('email', 'like', '%'.$email.'%')->where('role_id', '=', 2 )->paginate(5);
+        // } else {
+        //     $users = User::where('role_id', '=', 2 )->paginate(5);
+        // }
+        // return view('admin.users',['users'=>$users])->with('filter', $email);
+        $users = User::where('role_id', '=', 2 )->paginate(5);
+        return Response([
+            'success'=>true,
+            'users'=>$users
         ]);
-        $user->update($data);
-        return redirect(route('users-index'))->with('success', 'user updated successfully');
     }
 
-    public function deleteuser(Member $user){
+    public function update_user(int $user_id, Request $request){
+        $user = User::whereId($user_id)->first();
+        $user->update($request->all());
+        return Response([
+            'success'=>true,
+            $user
+        ],200);
+    }
+
+    public function delete_user(int $user_id){
+        $user = User::whereId($user_id);
         $user->delete();
-        return redirect(route('users-index'))->with('success', 'deleted successfully');
+        return Response([
+            'success'=>true,
+            'message'=>"User deleted successfully"
+        ],200);
     }
 
-    public function create(){
-        return view('usersCreate');
-    }
-
-    public function adduser(Request $request){
-        // auth()
-        $newBook = Member::create([
+    public function add_user(Request $request){
+        $newUser = User::create([
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'age'=>$request->input('age'),
-            'role'=>$request->input('role'),
+            'role_id'=>$request->input('role_id'),
             'password'=>$request->input('password'),
             'phone_number'=>$request->input('phone_number'),
             'subscription_over'=>date('Y-m-d', strtotime('+1 years')),
         ]);
-        return redirect(route('users-index'));
+        return Response([
+            'success'=>true,
+            'users'=>$newUser
+        ],200);
     }
 }
