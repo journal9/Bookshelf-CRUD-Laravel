@@ -19,6 +19,6 @@
 -- abstract class and interface
 -- method overriding
 -- queue
--- db relations   ***
--- authentication and sessions    ***
+-- db relations                              ***DONE
+-- authentication and sessions               ***DONE
 -- php.init  (unit testing)

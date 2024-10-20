@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Enums\GenreBook;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Genre;
 
 class BookController extends Controller{
 
     public function list_books(Request $request){
         $filter = $request->query('filter');
+        $genre = Genre::where('name',$filter)->first()->id;
         if (!empty($filter)) {
-            //1toM relatioship
-            $books = Book::where('genre', 'like', '%'.$filter.'%')->paginate(5);
+            $books = Genre::find($genre)->books;
         } else {
             $books = Book::paginate(5);
         }
