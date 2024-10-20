@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\BooksUsersController;
+use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,6 +17,9 @@ use App\Http\Controllers\User\BooksUsersController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class,'VerifyEmail'])->name('verification.verify');
+Route::post('/email/sendVerify', [VerificationController::class,'sendVerificationMail'])->name('verification.resend');
+
 Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::post('/register', 'register')->name('register');
     Route::post('/login', 'login')->name('login');
@@ -29,10 +33,12 @@ Route::controller(BookController::class)->prefix('books')->middleware('auth:sanc
     Route::delete('/{id}/delete','delete_book')->name('books-del');
 });
 
+
 Route::controller(UserController::class)->prefix('users')->middleware('auth:sanctum')->group( function(){
-    Route::get('/all_user_books','all_user_books')->name('users-index');
-    Route::post('/{book_id}/delete','add_user_book')->name('users-del');
-    Route::delete('/{book_id}/update','remove_user_book')->name('users-update');
+    Route::get('/all','list_users');
+    Route::post('/add','add_user');
+    Route::put('/{book_id}/update','update_user');
+    Route::delete('/{book_id}/remove','delete_user');
 });
 
 Route::controller(BooksUsersController::class)->prefix('published')->middleware('auth:sanctum')->group( function(){

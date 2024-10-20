@@ -22,6 +22,7 @@ class AuthController extends Controller
         //       'phone_number'=>'string',
         //       'role_id'=>'required|integer',
         //     ]);
+
             $newUser = User::create([
                 'name'=>$request->input('name'),
                 'email'=>$request->input('email'),
@@ -31,6 +32,10 @@ class AuthController extends Controller
                 'phone_number'=>$request->input('phone_number'),
                 'subscription_over'=>date('Y-m-d', strtotime('+1 years')),
             ]);
+            
+            $user_email = $newUser->email;
+            
+
             // return redirect(route('books-admin-index'));
             //return view('auth.login');
             return response()->json([
