@@ -6,10 +6,24 @@ use App\Enums\GenreBook;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\User;
 
 class BookController extends Controller{
 
+    public function __construct()
+    {
+        // $this->middleware('guest');
+    }
+    public function check_user(User $user)
+    {
+        // if($user->role_id != '1'){
+        //     throw 
+        // }
+    }
+
     public function list_books(Request $request){
+        // $user = auth()->user();
+        // $is_user = $this->check_user($user);
         $filter = $request->query('filter');
         $genre = Genre::where('name',$filter)->first()->id;
         if (!empty($filter)) {

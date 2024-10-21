@@ -7,6 +7,8 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\BooksUsersController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\EnsureAdminUser;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,7 +28,7 @@ Route::controller(AuthController::class)->prefix('auth')->group(function(){
     Route::get('/logout','logout')->middleware('auth:sanctum');
 });
 
-Route::controller(BookController::class)->prefix('books')->middleware('auth:sanctum')->group(function(){
+Route::controller(BookController::class)->prefix('books')->middleware('auth:sanctum')->middleware(EnsureAdminUser::class)->group(function(){
     Route::get('/','list_books')->name('books-index');  
     Route::post('/add','add_book')->name('books-add');
     Route::put('/{id}/update','update_book')->name('books-update');
@@ -34,7 +36,7 @@ Route::controller(BookController::class)->prefix('books')->middleware('auth:sanc
 });
 
 
-Route::controller(UserController::class)->prefix('users')->middleware('auth:sanctum')->group( function(){
+Route::controller(UserController::class)->prefix('users')->middleware('auth:sanctum')->middleware(EnsureAdminUser::class)->group( function(){
     Route::get('/all','list_users');
     Route::post('/add','add_user');
     Route::put('/{book_id}/update','update_user');

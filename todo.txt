@@ -3,22 +3,22 @@
 -- add admin user/users                      ----done
 -- add students(create,update,delete)        ----done
 -- create user groups                        ----done
--- add authentication and middleware
+-- add authentication and middleware         ----done
 -- add admin page                            ----done
 -- user-book map(id,uer-id,book-id)          ----done
--- add users page(add,remove) mb
+-- add users page(add,remove) mb             ----done
 -- add emailing system  [job queue-async]
 
 -- adding email verification for users
 -- admin panel report
 
 -- change naming, user page
--- session, auth
+-- session, auth    -----X
 
 ---------------------------------------------------
 -- abstract class and interface
 -- method overriding
--- queue emails
+-- queue emails                              ***
 -- db relations                              ***DONE
 -- authentication and sessions               ***DONE
 -- php.init  (unit testing)
