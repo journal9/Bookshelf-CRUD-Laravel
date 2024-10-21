@@ -10,20 +10,10 @@ use App\Models\User;
 
 class BookController extends Controller{
 
-    public function __construct()
-    {
-        // $this->middleware('guest');
-    }
-    public function check_user(User $user)
-    {
-        // if($user->role_id != '1'){
-        //     throw 
-        // }
-    }
-
     public function list_books(Request $request){
         // $user = auth()->user();
-        // $is_user = $this->check_user($user);
+        // $u = $request->user();
+        // dd($u);
         $filter = $request->query('filter');
         $genre = Genre::where('name',$filter)->first()->id;
         if (!empty($filter)) {

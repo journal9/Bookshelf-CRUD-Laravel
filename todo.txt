@@ -18,9 +18,9 @@
 ---------------------------------------------------
 -- abstract class and interface
 -- method overriding
--- queue emails                              ***
+-- queue emails                              ***DONE
 -- db relations                              ***DONE
 -- authentication and sessions               ***DONE
--- php.init  (unit testing)
+-- (unit testing)
 
 ************mwav uhmv sxsi bgez

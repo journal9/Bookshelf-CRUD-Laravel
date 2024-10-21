@@ -18,15 +18,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        //   $validatedData = $request->validate([
-        //       'name' => 'required|string|max:255',
-        //       'email' => 'required|string|email|max:255|unique:users',
-        //       'password' => 'required|string|min:8',
-        //       'age'=>'integer',
-        //       'phone_number'=>'string',
-        //       'role_id'=>'required|integer',
-        //     ]);
-
         $newUser = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -37,10 +28,9 @@ class AuthController extends Controller
             'subscription_over' => date('Y-m-d', strtotime('+1 years')),
         ]);
 
-        SendWelcomeMail::dispatch($newUser);
+        // SendWelcomeMail::dispatch($newUser);
+        dispatch(new SendWelcomeMail($newUser));
         //php artisan queue:work
-
-
         // return redirect(route('books-admin-index'));
         //return view('auth.login');
         return response()->json([
@@ -62,8 +52,7 @@ class AuthController extends Controller
         } else {
             if (! $user->email_verified_at) {
                 $user->markEmailAsVerified();
-                SendWelcomeMail::dispatch($user);
-                // user()->markEmailAsVerified();
+                dispatch(new SendWelcomeMail($user));
             }
             $user->tokens()->delete();
             return response()->json([

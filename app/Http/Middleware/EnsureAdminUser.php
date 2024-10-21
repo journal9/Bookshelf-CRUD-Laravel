@@ -15,23 +15,8 @@ class EnsureAdminUser
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    // public function handle(Request $request, Closure $next): Response
-    // {
-    //     // $user_id = auth()->id();
-    //     $user = $request->user();
-    //     echo $request;
-    //     return Response($request);
-    //     // $user = User::whereId($user_id)->first();
-    //     if($user->role_id == '2'){
-    //         return Response([
-    //             'status'=>"failure",
-    //             'message'=>"User not authorised"
-    //         ],401);
-    //     }
-    //     return $next($request);
-    // }
 
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         if ($request->user()->role_id == '2') {
             return Response([
