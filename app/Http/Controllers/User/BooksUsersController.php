@@ -10,33 +10,36 @@ use App\Models\Book;
 
 class BooksUsersController extends Controller
 {
-    public function all_user_books(){
+    public function all_user_books()
+    {
         $user_id =  auth()->id();
         $user = User::find($user_id);
         $all_published = $user::with('books')->get();
         return Response([
-            'success'=>'true',
-            'published'=>$all_published,
+            'success' => 'true',
+            'published' => $all_published,
         ]);
     }
 
-    public function add_user_book(int $book_id){
+    public function add_user_book(int $book_id)
+    {
         $user_id =  auth()->id();
         $user = User::find($user_id);
         $user->books()->attach($book_id);
         return Response([
-            'success'=>'true',
-            'book'=>'success',
+            'success' => 'true',
+            'book' => 'success',
         ]);
     }
 
-    public function remove_user_book(int $book_id){
+    public function remove_user_book(int $book_id)
+    {
         $user_id =  auth()->id();
-        $user = User::find($user_id);    
+        $user = User::find($user_id);
         $user->books()->detach($book_id);
         return Response([
-            'success'=>'true',
-            'message'=>'book removed from published books'
+            'success' => 'true',
+            'message' => 'book removed from published books'
         ]);
     }
 }

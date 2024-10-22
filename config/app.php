@@ -168,8 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\EsceptionProvider::class,
-        App\Providers\AdminExceptionProvider::class
+        App\Providers\UniqueConstraintExceptionProvider::class,
+        App\Providers\AdminRoleExceptionProvider::class
     ])->toArray(),
 
     /*

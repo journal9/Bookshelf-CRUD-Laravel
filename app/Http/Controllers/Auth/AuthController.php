@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Book;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Jobs\SendWelcomeMail;
@@ -30,9 +29,6 @@ class AuthController extends Controller
 
         // SendWelcomeMail::dispatch($newUser);
         dispatch(new SendWelcomeMail($newUser));
-        //php artisan queue:work
-        // return redirect(route('books-admin-index'));
-        //return view('auth.login');
         return response()->json([
             'status' => 'success',
             'message' => 'User created',

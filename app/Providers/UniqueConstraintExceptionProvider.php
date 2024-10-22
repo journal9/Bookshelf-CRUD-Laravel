@@ -7,7 +7,7 @@ use App\Exceptions\Handlers\UserNotAuthorisedExceptionHandler;
 use App\Interfaces\ExceptionHandlerInterface;
 use Illuminate\Support\ServiceProvider;
 
-class EsceptionProvider extends ServiceProvider
+class UniqueConstraintExceptionProvider extends ServiceProvider
 {
     /**
      * Register services.

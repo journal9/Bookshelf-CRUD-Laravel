@@ -6,7 +6,7 @@ use App\Exceptions\Handlers\UserNotAuthorisedExceptionHandler;
 use App\Interfaces\ExceptionHandlerInterface;
 use Illuminate\Support\ServiceProvider;
 
-class AdminExceptionProvider extends ServiceProvider
+class AdminRoleExceptionProvider extends ServiceProvider
 {
     /**
      * Register services.

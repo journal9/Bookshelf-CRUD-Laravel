@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Verified;
@@ -28,7 +29,7 @@ class VerificationController extends Controller
         if ($request->user()->hasVerifiedEmail()) {
             return Response(['message' => "Email already Verified"]);
         }
-        if($request->user()->markEmailAsVerified()){
+        if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
         return Response(['status' => "Success", 'message' => "Email Verified"], 200);

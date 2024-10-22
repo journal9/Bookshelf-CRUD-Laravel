@@ -21,7 +21,6 @@ class EnsureAdminUser
 
     public function handle(Request $request, Closure $next)
     {
-        
             try{
                 if ($request->user()->role_id == '2') {
                 throw new Exception();
@@ -31,12 +30,6 @@ class EnsureAdminUser
                 $handler = app()->make(UserNotAuthorisedExceptionHandler::class);
                 return $handler->handle($e);
             }
-            // throw new UserNotAuthorisedExceptionHandler;
-            
-            // return Response([
-            //     'status'=>"failure",
-            //     'message'=>"User not authorised"
-            // ],401);
 
         return $next($request);
     }

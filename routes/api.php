@@ -2,11 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\BooksUsersController;
-use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EnsureAdminUser;
 /*
