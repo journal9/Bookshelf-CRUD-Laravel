@@ -2,11 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\Handlers\UserNotAuthorisedException;
+use App\Exceptions\Handlers\UserNotAuthorisedExceptionHandler;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 // use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Exception;
 
 class EnsureAdminUser
 {
@@ -18,12 +21,22 @@ class EnsureAdminUser
 
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role_id == '2') {
-            return Response([
-                'status'=>"failure",
-                'message'=>"User not authorised"
-            ],401);
-        }
+        
+            try{
+                if ($request->user()->role_id == '2') {
+                throw new Exception();
+                }
+            }
+            catch (Exception $e){
+                $handler = app()->make(UserNotAuthorisedExceptionHandler::class);
+                return $handler->handle($e);
+            }
+            // throw new UserNotAuthorisedExceptionHandler;
+            
+            // return Response([
+            //     'status'=>"failure",
+            //     'message'=>"User not authorised"
+            // ],401);
 
         return $next($request);
     }

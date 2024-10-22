@@ -54,3 +54,12 @@ Route::controller(MemberController::class)->prefix('member')->group( function(){
     // Route::put('/{book}/update','updateuser')->name('member');
 });
 
+Route::get('/test-exception', function() {
+    try {
+        $handler = app()->make(\App\Exceptions\Handlers\UniqueConstraintViolationExceptionHandler::class);
+        dd('Handler exists!');
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
+});
+

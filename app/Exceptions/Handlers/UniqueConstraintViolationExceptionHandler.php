@@ -1,26 +1,29 @@
-<?
+<?php
+
 namespace App\Exceptions\Handlers;
+
 use App\Interfaces\ExceptionHandlerInterface;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
-class UserNotAuthorisedException implements ExceptionHandlerInterface
+class UniqueConstraintViolationExceptionHandler implements ExceptionHandlerInterface
 {
     public function handle(Throwable $exception): JsonResponse
     {
         return response()->json([
-            'success'=>false,
-            'error' => $this->getMessage($exception),
+            'status' => 'failure',
+            'message' => $this->getMessage($exception),
         ], $this->getStatusCode($exception));
     }
 
     public function getMessage(Throwable $exception): string
     {
-        return 'User is not authorised to perform this action.';
+        return 'An email with this value already exists.';
     }
 
     public function getStatusCode(Throwable $exception): int
     {
-        return 401;
+        return 422;
     }
 }

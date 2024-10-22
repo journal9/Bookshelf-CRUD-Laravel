@@ -16,11 +16,9 @@
 -- session, auth    -----X
 
 ---------------------------------------------------
--- abstract class and interface
+-- abstract class and interface              ***DONE
 -- method overriding
 -- queue emails                              ***DONE
 -- db relations                              ***DONE
 -- authentication and sessions               ***DONE
 -- (unit testing)
-
-************mwav uhmv sxsi bgez

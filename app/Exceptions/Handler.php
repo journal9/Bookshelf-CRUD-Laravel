@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Interfaces\ExceptionHandlerInterface;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\UniqueConstraintViolationException;
+use App\Exceptions\Handlers\UniqueConstraintViolationExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -17,6 +20,31 @@ class Handler extends ExceptionHandler
         'password',
         'password_confirmation',
     ];
+    protected $exceptionMap = [
+        UniqueConstraintViolationException::class => UniqueConstraintViolationExceptionHandler::class
+    ];
+
+    public function render($request, Throwable $exception)
+    {
+        if ($request->expectsJson()) {
+            $handler = $this->getExceptionHandler($exception);
+            if ($handler) {
+                return $handler->handle($exception);
+            }
+        }
+
+        return parent::render($request, $exception);
+    }
+
+    private function getExceptionHandler(Throwable $exception): ?ExceptionHandlerInterface
+    {
+        foreach ($this->exceptionMap as $exceptionClass => $handlerClass) {
+            if ($exception instanceof $exceptionClass) {
+                return app()->make($handlerClass);
+            }
+        }
+        return null;
+    }
 
     /**
      * Register the exception handling callbacks for the application.
