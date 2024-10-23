@@ -10,10 +10,10 @@ use App\Jobs\SendWelcomeMail;
 
 class AuthController extends Controller
 {
-    public function register_view()
-    {
-        return view('auth.register_admin');
-    }
+    // public function register_view()
+    // {
+    //     return view('auth.register_admin');
+    // }
 
     public function register(Request $request)
     {
@@ -27,7 +27,6 @@ class AuthController extends Controller
             'subscription_over' => date('Y-m-d', strtotime('+1 years')),
         ]);
 
-        // SendWelcomeMail::dispatch($newUser);
         dispatch(new SendWelcomeMail($newUser));
         return response()->json([
             'status' => 'success',
