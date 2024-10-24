@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Genre;
 use App\Models\User;
+use Exception;
 
 class BookController extends Controller
 {
@@ -38,8 +39,18 @@ class BookController extends Controller
             'published_year' => 'required|integer',
             'genre_id' => 'required|integer',
         ]);
-        $newBook = Book::create($data);
-
+        try{
+            $newBook = Book::create($data);
+        }
+        catch(Exception $e){
+            return response()->json(
+                [
+                    'status' => "failure",
+                    'message' => "Duplicate data provided."
+                ],
+                422
+            );
+        }
         return response()->json(
             [
                 'status' => 'success',
