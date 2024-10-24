@@ -20,5 +20,6 @@ class Book extends Model
         return $this->belongsToMany(User::class);
     }
 
+    // protected $unique = ['author_name','title'];
 
 }

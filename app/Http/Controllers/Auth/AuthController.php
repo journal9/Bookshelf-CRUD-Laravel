@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,7 @@ class AuthController extends Controller
     //     return view('auth.register_admin');
     // }
 
-    public function register(Request $request)
+    public function register(UserRequest $request)
     {
         $newUser = User::create([
             'name' => $request->input('name'),
@@ -28,6 +29,7 @@ class AuthController extends Controller
         ]);
 
         dispatch(new SendWelcomeMail($newUser));
+        
         return response()->json([
             'status' => 'success',
             'message' => 'User created',
@@ -71,7 +73,7 @@ class AuthController extends Controller
         return response()->json(
             [
                 'status' => 'success',
-                'message' => 'User logged out successfully'
+                'message' => trans('lang.User_logged_out_successfully')
             ]
         );
     }

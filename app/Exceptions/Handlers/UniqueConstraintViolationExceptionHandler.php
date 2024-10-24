@@ -24,6 +24,6 @@ class UniqueConstraintViolationExceptionHandler implements ExceptionHandlerInter
 
     public function getStatusCode(Throwable $exception): int
     {
-        return 400;
+        return 422;
     }
 }
